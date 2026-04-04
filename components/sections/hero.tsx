@@ -22,7 +22,7 @@ const staggerContainer = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center py-20">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Content */}
