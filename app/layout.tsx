@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+import SmoothScroll from "@/components/animations/smooth-scroll";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" className={cn("antialiased", inter.variable)} suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          <SmoothScroll>{children}</SmoothScroll>
         </ThemeProvider>
       </body>
     </html>
