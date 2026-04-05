@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "@/components/layout/container";
+import { SectionContainer } from "@/components/layout/section-container";
+import { SectionHeader } from "@/components/layout/section-header";
 import { Users, Zap, Layers, Rocket, BookOpen } from "lucide-react";
 
 const philosophyPrinciples = [
@@ -54,23 +55,12 @@ const item = {
 
 export function TechPhilosophy() {
   return (
-    <section className="py-24 md:py-32">
-      <Container>
-        <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <div className="mb-16">
-            <p className="text-sm font-medium text-primary tracking-wide mb-3">
-              Philosophy
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              My Engineering Philosophy
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-              Building software is about more than writing code. It's about solving
-              problems, making thoughtful decisions, and creating value. These
-              principles guide how I approach every project.
-            </p>
-          </div>
+    <SectionContainer>
+      <SectionHeader
+        label="Philosophy"
+        title="My Engineering Philosophy"
+        subtitle="Building software is about more than writing code. It's about solving problems, making thoughtful decisions, and creating value. These principles guide how I approach every project."
+      />
 
           {/* Philosophy Principles */}
           <motion.div
@@ -100,8 +90,6 @@ export function TechPhilosophy() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-      </Container>
-    </section>
+    </SectionContainer>
   );
 }

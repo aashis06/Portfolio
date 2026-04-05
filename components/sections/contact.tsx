@@ -63,10 +63,9 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 md:py-32">
-      <Container>
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+    <section id="contact" className="py-24">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-10">
+        <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Side - Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -262,7 +261,6 @@ export function Contact() {
             </motion.div>
           </div>
         </div>
-      </Container>
     </section>
   );
 }

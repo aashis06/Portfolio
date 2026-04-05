@@ -29,22 +29,33 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Detect active section
-      const sections = navLinks.map((link) => link.href.substring(1));
-      const scrollPosition = window.scrollY + 100;
+      // Detect active section with better logic for grouped sections
+      const scrollPosition = window.scrollY + 150;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
+      // Define section groups for navigation
+      const sectionGroups = {
+        home: ["home"],
+        about: ["about"],
+        skills: ["skills"],
+        projects: ["projects"],
+        experience: ["experience"],
+        contact: ["contact"],
+      };
 
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-            break;
+      for (const [navId, sectionIds] of Object.entries(sectionGroups)) {
+        for (const sectionId of sectionIds) {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const offsetTop = element.offsetTop;
+            const offsetHeight = element.offsetHeight;
+
+            if (
+              scrollPosition >= offsetTop &&
+              scrollPosition < offsetTop + offsetHeight
+            ) {
+              setActiveSection(navId);
+              return;
+            }
           }
         }
       }
