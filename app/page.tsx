@@ -1,14 +1,17 @@
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
-import { About } from "@/components/sections/about";
-import { TechPhilosophy } from "@/components/sections/tech-philosophy";
-import { EliteSkills } from "@/components/sections/elite-skills";
-import { Projects } from "@/components/sections/projects";
-import { Experience } from "@/components/sections/experience";
-import { DeveloperTimeline } from "@/components/sections/developer-timeline";
-import { Contact } from "@/components/sections/contact";
-import { Footer } from "@/components/layout/footer";
 import { Reveal } from "@/components/animations/reveal";
+
+// Lazy load non-critical sections
+const About = dynamic(() => import("@/components/sections/about").then(mod => ({ default: mod.About })));
+const TechPhilosophy = dynamic(() => import("@/components/sections/tech-philosophy").then(mod => ({ default: mod.TechPhilosophy })));
+const EliteSkills = dynamic(() => import("@/components/sections/elite-skills").then(mod => ({ default: mod.EliteSkills })));
+const Projects = dynamic(() => import("@/components/sections/projects").then(mod => ({ default: mod.Projects })));
+const Experience = dynamic(() => import("@/components/sections/experience").then(mod => ({ default: mod.Experience })));
+const DeveloperTimeline = dynamic(() => import("@/components/sections/developer-timeline").then(mod => ({ default: mod.DeveloperTimeline })));
+const Contact = dynamic(() => import("@/components/sections/contact").then(mod => ({ default: mod.Contact })));
+const Footer = dynamic(() => import("@/components/layout/footer").then(mod => ({ default: mod.Footer })));
 
 export default function Home() {
 return (

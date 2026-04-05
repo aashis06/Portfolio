@@ -1,16 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "@/components/layout/container";
+import { SectionContainer } from "@/components/layout/section-container";
+import { SectionHeader } from "@/components/layout/section-header";
 import {
   Code2,
   Server,
   Database,
   Cloud,
-  TestTube,
   Layout,
-  Boxes,
-  GitBranch,
 } from "lucide-react";
 
 const skillDomains = [
@@ -144,22 +142,13 @@ const item = {
 
 export function EliteSkills() {
   return (
-    <section id="skills" className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/30">
-      <Container>
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <p className="text-sm font-medium text-primary tracking-wide mb-3">
-              Technical Expertise
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Engineering Skills
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Building modern web applications with a focus on performance,
-              scalability, and user experience.
-            </p>
-          </div>
+    <SectionContainer id="skills" className="bg-gradient-to-b from-background to-muted/30">
+      <SectionHeader
+        label="Technical Expertise"
+        title="Engineering Skills"
+        subtitle="Building modern web applications with a focus on performance, scalability, and user experience."
+        align="left"
+      />
 
           {/* Primary Engineering Focus */}
           <motion.div
@@ -231,8 +220,6 @@ export function EliteSkills() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-      </Container>
-    </section>
+    </SectionContainer>
   );
 }

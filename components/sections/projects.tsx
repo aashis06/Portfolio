@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ExternalLink, GitBranch, ArrowRight } from "lucide-react";
 import { projects } from "@/lib/projects";
+import { SectionContainer } from "@/components/layout/section-container";
+import { SectionHeader } from "@/components/layout/section-header";
 
 const container = {
   hidden: {},
@@ -20,24 +22,13 @@ const item = {
 
 export function Projects() {
   return (
-    <section id="projects" className="py-32">
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Heading */}
-        <div className="max-w-2xl mb-20">
-          <p className="text-sm text-muted-foreground mb-2">
-            Selected Work
-          </p>
-
-          <h2 className="text-5xl font-bold">
-            Projects & Case Studies.
-          </h2>
-
-          <p className="mt-4 text-muted-foreground">
-            A collection of products I designed and developed across
-            ecommerce, SaaS platforms, and real-world applications.
-          </p>
-        </div>
+    <SectionContainer id="projects">
+      <SectionHeader
+        label="Selected Work"
+        title="Projects & Case Studies"
+        subtitle="A collection of products I designed and developed across ecommerce, SaaS platforms, and real-world applications."
+        align="left"
+      />
 
         {/* Projects */}
         <motion.div
@@ -54,8 +45,8 @@ export function Projects() {
               className="group grid lg:grid-cols-2 gap-12 items-center"
             >
               {/* Image */}
-              <Link href={`/projects/${project.slug}`} className="block">
-                <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-primary/10 via-primary/5 to-background aspect-video cursor-pointer">
+              <Link href={`/projects/${project.slug}`} className="block group">
+                <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-primary/10 via-primary/5 to-background aspect-video cursor-pointer transition-all duration-300 hover:border-primary/30">
                   {project.image ? (
                     <Image
                       src={project.image}
@@ -141,7 +132,6 @@ export function Projects() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
-    </section>
+    </SectionContainer>
   );
 }

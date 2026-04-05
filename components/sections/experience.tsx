@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "@/components/layout/container";
+import { SectionContainer } from "@/components/layout/section-container";
+import { SectionHeader } from "@/components/layout/section-header";
 import { Briefcase, MapPin, Calendar } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -40,27 +41,12 @@ const item = {
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 md:py-32 bg-gradient-to-b from-muted/30 to-background">
-      <Container>
-        <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-20"
-          >
-            <p className="text-sm font-medium text-primary tracking-wide mb-3">
-              Career
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Experience
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Professional journey and real-world development experience
-            </p>
-          </motion.div>
+    <SectionContainer id="experience" className="bg-gradient-to-b from-muted/30 to-background">
+      <SectionHeader
+        label="Career"
+        title="Experience"
+        subtitle="Professional journey and real-world development experience"
+      />
 
           {/* Timeline */}
           <motion.div
@@ -162,8 +148,6 @@ export function Experience() {
               "Continuously learning, building, and improving as a full-stack developer."
             </p>
           </motion.div>
-        </div>
-      </Container>
-    </section>
+    </SectionContainer>
   );
 }

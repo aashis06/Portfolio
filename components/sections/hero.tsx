@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 
 const fadeInUp = {
@@ -22,7 +21,7 @@ const staggerContainer = {
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center py-24">
+    <section id="home" className="relative min-h-screen flex items-center justify-center py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Content */}
@@ -36,7 +35,7 @@ export function Hero() {
               variants={fadeInUp}
               className="text-sm md:text-base text-muted-foreground font-medium tracking-wide"
             >
-              Hi, I'm Aashis
+              Hi, I'm Ashis
             </motion.p>
 
             <motion.h1
@@ -63,15 +62,17 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="text-base"
+                className="text-base group"
                 asChild
               >
-                <a href="#projects">View Projects</a>
+                <a href="#projects" className="relative overflow-hidden">
+                  <span className="relative z-10">View Projects</span>
+                </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="text-base"
+                className="text-base group"
                 asChild
               >
                 <a href="#contact">Contact Me</a>
@@ -148,7 +149,7 @@ export function Hero() {
                         visible: { opacity: 1, scale: 1 },
                       }}
                       whileHover={{ scale: 1.05 }}
-                      className="px-3 py-2 bg-background/80 border border-border/60 rounded-lg text-center text-sm font-medium hover:border-primary/50 hover:bg-background transition-all duration-300"
+                      className="px-3 py-2 bg-background/80 border border-border/60 rounded-lg text-center text-sm font-medium hover:border-primary/50 hover:bg-background transition-all duration-300 cursor-default"
                     >
                       {tech}
                     </motion.div>

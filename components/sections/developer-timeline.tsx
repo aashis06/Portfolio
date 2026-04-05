@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "@/components/layout/container";
+import { SectionContainer } from "@/components/layout/section-container";
+import { SectionHeader } from "@/components/layout/section-header";
 
 const timelineData = [
   {
@@ -58,21 +59,12 @@ const item = {
 
 export function DeveloperTimeline() {
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-background to-muted/30">
-      <Container>
-        <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <p className="text-sm font-medium text-primary tracking-wide mb-3">
-              Journey
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Developer Timeline
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-              A journey of continuous learning, building, and growing as a developer.
-            </p>
-          </div>
+    <SectionContainer size="small" className="bg-gradient-to-b from-background to-muted/30">
+      <SectionHeader
+        label="Journey"
+        title="Developer Timeline"
+        subtitle="A journey of continuous learning, building, and growing as a developer."
+      />
 
           {/* Timeline */}
           <motion.div
@@ -138,8 +130,6 @@ export function DeveloperTimeline() {
               ))}
             </div>
           </motion.div>
-        </div>
-      </Container>
-    </section>
+    </SectionContainer>
   );
 }

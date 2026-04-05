@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 import {
   Sheet,
   SheetContent,
@@ -24,6 +25,12 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,6 +134,22 @@ export function Navbar() {
                 )}
               </a>
             ))}
+            
+            {/* Theme Toggle */}
+            {mounted && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="ml-2"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -157,6 +180,27 @@ export function Navbar() {
                     {link.name}
                   </motion.a>
                 ))}
+                
+                {/* Mobile Theme Toggle */}
+                {mounted && (
+                  <Button
+                    variant="outline"
+                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                    className="w-full justify-start"
+                  >
+                    {theme === "dark" ? (
+                      <>
+                        <Sun className="h-4 w-4 mr-2" />
+                        Light Mode
+                      </>
+                    ) : (
+                      <>
+                        <Moon className="h-4 w-4 mr-2" />
+                        Dark Mode
+                      </>
+                    )}
+                  </Button>
+                )}
               </div>
             </SheetContent>
           </Sheet>
