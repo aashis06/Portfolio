@@ -27,57 +27,86 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Detect active section with better logic for grouped sections
-      const scrollPosition = window.scrollY + 150;
+      // Skip detection during programmatic scrolling
+      if (isScrolling) return;
 
-      // Define section groups for navigation
-      const sectionGroups = {
-        home: ["home"],
-        about: ["about"],
-        skills: ["skills"],
-        projects: ["projects"],
-        experience: ["experience"],
-        contact: ["contact"],
-      };
+      // Clear any existing timeout
+      clearTimeout(scrollTimeout);
 
-      for (const [navId, sectionIds] of Object.entries(sectionGroups)) {
-        for (const sectionId of sectionIds) {
-          const element = document.getElementById(sectionId);
+      // Debounce the section detection
+      scrollTimeout = setTimeout(() => {
+        const scrollPosition = window.scrollY + 150;
+        
+        const sections = [
+          { id: "home", navId: "home" },
+          { id: "about", navId: "about" },
+          { id: "skills", navId: "skills" },
+          { id: "projects", navId: "projects" },
+          { id: "experience", navId: "experience" },
+          { id: "contact", navId: "contact" },
+        ];
+
+        let currentSection = "home";
+        
+        // Check each section to find which one we're currently in
+        for (const section of sections) {
+          const element = document.getElementById(section.id);
           if (element) {
-            const offsetTop = element.offsetTop;
-            const offsetHeight = element.offsetHeight;
-
-            if (
-              scrollPosition >= offsetTop &&
-              scrollPosition < offsetTop + offsetHeight
-            ) {
-              setActiveSection(navId);
-              return;
+            const rect = element.getBoundingClientRect();
+            const offsetTop = window.scrollY + rect.top;
+            const offsetBottom = offsetTop + element.offsetHeight;
+            
+            // Check if scroll position is within this section
+            if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+              currentSection = section.navId;
+              break;
             }
           }
         }
-      }
+
+        setActiveSection(currentSection);
+      }, 50);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    handleScroll(); // Call once on mount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [isScrolling]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    const targetId = href.substring(1);
     const element = document.querySelector(href);
+    
     if (element) {
+      // Set the active section immediately
+      setActiveSection(targetId);
+      
+      // Disable scroll detection during animation
+      setIsScrolling(true);
+      
       element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
+      
+      // Re-enable scroll detection after animation completes
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000);
     }
   };
 

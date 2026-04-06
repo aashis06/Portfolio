@@ -178,6 +178,7 @@ export function Contact() {
                       onChange={handleChange}
                       required
                       placeholder=" "
+                      suppressHydrationWarning
                       className="peer w-full px-4 py-3 rounded-xl border border-border/60 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
                     />
                     <label
@@ -198,6 +199,7 @@ export function Contact() {
                       onChange={handleChange}
                       required
                       placeholder=" "
+                      suppressHydrationWarning
                       className="peer w-full px-4 py-3 rounded-xl border border-border/60 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-300"
                     />
                     <label
@@ -218,6 +220,7 @@ export function Contact() {
                       required
                       rows={5}
                       placeholder=" "
+                      suppressHydrationWarning
                       className="peer w-full px-4 py-3 rounded-xl border border-border/60 bg-background/50 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none transition-all duration-300"
                     />
                     <label
