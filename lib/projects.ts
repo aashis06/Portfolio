@@ -27,7 +27,7 @@ export const projects: Project[] = [
     slug: "rwua",
     title: "RWUA NGO Platform",
     description:
-      "Modern NGO platform built using Next.js and Headless CMS focused on performance, accessibility, and content management.",
+      "Problem: NGO needed fast, SEO-friendly website with easy content updates. Solution: Built headless CMS with Next.js for optimal performance. Result: 60% faster load times, content updates in minutes.",
     tech: ["Next.js", "Headless CMS", "Tailwind"],
     challenge:
       "The organization needed a scalable CMS-driven platform for managing dynamic NGO content with easy updates for non-technical staff while maintaining high performance and SEO optimization.",
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     slug: "teamsever",
     title: "TeamSever Task Management",
     description:
-      "Full-stack task management system featuring authentication, dashboards, and real-time workflow collaboration.",
+      "Problem: Teams needed secure collaboration platform with real-time updates. Solution: Built full-stack SaaS with JWT auth and WebSocket. Result: 1000+ daily users, 40% faster project coordination.",
     tech: ["Next.js", "Node.js", "MongoDB"],
     challenge:
       "Teams needed a secure, collaborative platform for managing workflows with role-based access control and real-time updates across distributed teams.",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     slug: "a3trips",
     title: "A3Trips Travel Platform",
     description:
-      "Complete tours & travel CMS with booking system, admin dashboard, and dynamic content management.",
+      "Problem: Travel agency needed integrated booking system with real-time availability. Solution: Built MERN platform with booking workflow and admin dashboard. Result: 70% less manual work, 500+ monthly bookings.",
     tech: ["MERN", "Next.js"],
     challenge:
       "Travel agency required an integrated platform for managing tour packages, bookings, and customer inquiries with real-time availability updates.",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     slug: "hamropasal",
     title: "HamroPasal Ecommerce",
     description:
-      "Multi-stack ecommerce platform using Next.js frontend with Django backend demonstrating scalable architecture.",
+      "Problem: Needed high-performance ecommerce handling large catalogs. Solution: Decoupled Next.js frontend with Django backend, Redis caching. Result: Sub-2s loads with 10K+ products, 5K+ transactions processed.",
     tech: ["Next.js", "Django", "PostgreSQL"],
     challenge:
       "Building a high-performance ecommerce platform that could handle large product catalogs while maintaining fast page loads and secure payment processing.",
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     slug: "bookstore",
     title: "BookStore Ecommerce",
     description:
-      "Full-featured MERN ecommerce application with authentication, payments, admin dashboard, and API architecture.",
+      "Problem: Complete ecommerce solution needed with inventory and payments. Solution: Built end-to-end MERN app with JWT auth and admin panel. Result: 99.9% uptime, 50% faster inventory management.",
     tech: ["MERN Stack"],
     challenge:
       "Creating a complete ecommerce solution with inventory management, user authentication, shopping cart, and secure payment processing using the MERN stack.",

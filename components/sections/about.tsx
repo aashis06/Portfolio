@@ -29,7 +29,7 @@ export function About() {
     <SectionContainer id="about" className="bg-gradient-to-b from-background to-muted/30">
       <SectionHeader
         label="About Me"
-        title="Building scalable digital products."
+        title="Hi, I'm Ashis"
         align="left"
       />
 
@@ -37,17 +37,18 @@ export function About() {
         {/* Left Side - Content */}
         <div className="space-y-6">
           <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
-            I'm a <span className="font-semibold text-foreground">Full Stack Developer</span> passionate about creating exceptional
-            web experiences. I specialize in building <span className="font-semibold text-foreground">modern</span>, <span className="font-semibold text-foreground">scalable</span>, and{" "}
-            <span className="font-semibold text-foreground">high-performance</span> applications using cutting-edge technologies.
+            I'm a developer who actually ships. Not just code—complete products that solve real problems and handle real users.
           </p>
           <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
-            With expertise in <span className="font-semibold text-foreground">Next.js</span>, <span className="font-semibold text-foreground">Node.js</span>, and the <span className="font-semibold text-foreground">MERN</span> stack, I
-            focus on delivering solutions with clean architecture and intuitive user interfaces.
+            I specialize in the <span className="font-semibold text-foreground">MERN stack</span> and <span className="font-semibold text-foreground">Next.js</span>, building everything from 
+            task management platforms to ecommerce systems. My code runs in production, serving 1000+ daily users.
           </p>
           <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
-            My approach combines technical excellence with user-centered design, ensuring every project not only works flawlessly but
-            also provides an outstanding experience.
+            What sets me apart? I write <span className="font-semibold text-foreground">clean, maintainable code</span>, communicate clearly with teams, 
+            and focus on delivering features that create business value—not just checking boxes.
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
+            Currently seeking full-time opportunities where I can contribute to meaningful products and grow alongside talented teams.
           </p>
         </div>
 

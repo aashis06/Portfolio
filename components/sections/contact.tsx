@@ -76,16 +76,18 @@ export function Contact() {
             >
               {/* Header */}
               <div className="space-y-4">
-                <p className="text-sm font-medium text-primary tracking-wide">
+                <p className="text-sm font-medium text-primary tracking-wide uppercase">
                   Get in Touch
                 </p>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                   Let's Work Together
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  I'm always interested in hearing about new projects and
-                  opportunities. Whether you have a question or just want to say
-                  hi, feel free to reach out!
+                  Looking for a dedicated full-stack developer? I'm available for full-time opportunities, 
+                  freelance projects, and technical collaborations.
+                </p>
+                <p className="text-sm text-muted-foreground/80 italic">
+                  💬 I typically respond within 24 hours
                 </p>
               </div>
 

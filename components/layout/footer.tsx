@@ -73,8 +73,11 @@ export function Footer() {
                 </p>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Building modern web applications with clean code, scalable
-                architecture, and exceptional user experiences.
+                Passionate about building scalable web applications with clean code 
+                and modern architecture. Ready to contribute to innovative teams.
+              </p>
+              <p className="text-xs text-muted-foreground/80 italic">
+                Available for full-time opportunities
               </p>
             </div>
 
@@ -147,7 +150,9 @@ export function Footer() {
             <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-muted-foreground">
               <p>© {new Date().getFullYear()} Ashis Acharya. All rights reserved.</p>
               <span className="hidden md:block">•</span>
-              <p>Built with Next.js & Tailwind CSS</p>
+              <p>Built with Next.js, TypeScript & Tailwind CSS</p>
+              <span className="hidden md:block">•</span>
+              <p>Deployed on Vercel</p>
             </div>
 
             {/* Back to Top Button */}

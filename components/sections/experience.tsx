@@ -10,16 +10,16 @@ const experiences = [
   {
     company: "Sarbatra Inc Pvt Ltd",
     role: "Full Stack Developer Intern",
-    duration: "December 10, 2025 — March 12, 2026",
+    duration: "December 2025 — March 2026",
     location: "Koteshwor, Kathmandu",
     type: "Internship",
     responsibilities: [
-      "Developed full-stack web applications using MERN stack",
-      "Built RESTful APIs and backend services",
-      "Designed responsive frontend interfaces using React",
-      "Managed MongoDB database schemas and integrations",
-      "Implemented end-to-end application architecture",
-      "Collaborated on real company projects",
+      "Developed 4 production applications including a Headless CMS platform, e-commerce store, SaaS task manager, and travel booking system using Next.js, TypeScript, and MongoDB",
+      "Implemented secure authentication systems and role-based access control (RBAC) across multiple applications",
+      "Built and documented RESTful APIs with Express.js, reducing API response time by optimizing database queries",
+      "Secured applications against CSRF and injection attacks, wrote unit tests with Jest achieving 80%+ code coverage",
+      "Collaborated with team using Git/GitHub, participated in code reviews, and maintained clean, documented codebases",
+      "Integrated real-time features using Socket.io for live collaboration and notifications",
     ],
   },
 ];

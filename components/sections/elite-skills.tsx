@@ -3,223 +3,168 @@
 import { motion } from "framer-motion";
 import { SectionContainer } from "@/components/layout/section-container";
 import { SectionHeader } from "@/components/layout/section-header";
-import {
-  Code2,
-  Server,
-  Database,
-  Cloud,
-  Layout,
-} from "lucide-react";
 
-const skillDomains = [
+const techCategories = [
   {
-    title: "Frontend Engineering",
-    icon: Layout,
-    skills: [
-      {
-        name: "Next.js",
-        description: "Server-side rendering, static generation, and API routes",
-        proficiency: "Expert",
-      },
-      {
-        name: "React",
-        description: "Component architecture, hooks, and state management",
-        proficiency: "Expert",
-      },
-      {
-        name: "TypeScript",
-        description: "Type-safe development and advanced patterns",
-        proficiency: "Advanced",
-      },
-      {
-        name: "Tailwind CSS",
-        description: "Utility-first styling and responsive design",
-        proficiency: "Expert",
-      },
+    title: "Frontend",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "JavaScript",
+      "HTML/CSS",
     ],
   },
   {
-    title: "Backend Systems",
-    icon: Server,
-    skills: [
-      {
-        name: "Node.js",
-        description: "RESTful APIs, authentication, and server logic",
-        proficiency: "Advanced",
-      },
-      {
-        name: "Express",
-        description: "Middleware, routing, and API architecture",
-        proficiency: "Advanced",
-      },
-      {
-        name: "Django",
-        description: "Python web framework and ORM",
-        proficiency: "Intermediate",
-      },
-      {
-        name: "REST APIs",
-        description: "API design, documentation, and best practices",
-        proficiency: "Expert",
-      },
+    title: "Backend",
+    technologies: [
+      "Node.js",
+      "Express",
+      "Django",
+      "REST API",
+      "GraphQL",
+      "JWT Auth",
     ],
   },
   {
     title: "Databases",
-    icon: Database,
-    skills: [
-      {
-        name: "MongoDB",
-        description: "NoSQL database design and aggregation",
-        proficiency: "Advanced",
-      },
-      {
-        name: "PostgreSQL",
-        description: "Relational database design and optimization",
-        proficiency: "Advanced",
-      },
-      {
-        name: "MySQL",
-        description: "Database management and query optimization",
-        proficiency: "Intermediate",
-      },
-      {
-        name: "Redis",
-        description: "Caching strategies and session management",
-        proficiency: "Intermediate",
-      },
+    technologies: [
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "Redis",
+      "Prisma",
+      "Mongoose",
     ],
   },
   {
     title: "DevOps & Tools",
-    icon: Cloud,
-    skills: [
-      {
-        name: "Git",
-        description: "Version control and collaboration workflows",
-        proficiency: "Expert",
-      },
-      {
-        name: "Docker",
-        description: "Containerization and deployment",
-        proficiency: "Intermediate",
-      },
-      {
-        name: "CI/CD",
-        description: "Automated testing and deployment pipelines",
-        proficiency: "Intermediate",
-      },
-      {
-        name: "Vercel/Netlify",
-        description: "Modern deployment platforms",
-        proficiency: "Advanced",
-      },
+    technologies: [
+      "Git",
+      "Docker",
+      "Vercel",
+      "AWS",
+      "CI/CD",
+      "Linux",
+    ],
+  },
+  {
+    title: "Testing",
+    technologies: [
+      "Jest",
+      "Vitest",
+      "Postman",
+      "Cypress",
     ],
   },
 ];
-
-const proficiencyColors = {
-  Expert: "bg-green-500/10 text-green-500 border-green-500/20",
-  Advanced: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-  Intermediate: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
-  Beginner: "bg-gray-500/10 text-gray-500 border-gray-500/20",
-};
 
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
+const cardVariant = {
+  hidden: { opacity: 0, y: 30 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const techItemVariant = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: { 
+    opacity: 1, 
+    scale: 1,
+    transition: {
+      duration: 0.3,
+    },
+  },
 };
 
 export function EliteSkills() {
   return (
-    <SectionContainer id="skills" className="bg-gradient-to-b from-background to-muted/30">
+    <SectionContainer id="skills" className="bg-gradient-to-b from-background via-muted/20 to-background">
       <SectionHeader
-        label="Technical Expertise"
-        title="Engineering Skills"
-        subtitle="Building modern web applications with a focus on performance, scalability, and user experience."
+        label="Technology Stack"
+        title="Engineering Toolbox"
+        subtitle="Technologies I ship production-ready applications with"
         align="left"
       />
 
-          {/* Primary Engineering Focus */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {techCategories.map((category, index) => (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16 p-8 rounded-2xl border-2 border-primary/20 bg-primary/5 backdrop-blur-sm"
+            key={index}
+            variants={cardVariant}
+            whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            className="group relative p-8 rounded-2xl bg-card/40 backdrop-blur-xl border border-border/60 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 overflow-hidden"
           >
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <Code2 className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Primary Engineering Focus</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Full Stack development using <span className="font-semibold text-foreground">MERN stack</span> and{" "}
-                  <span className="font-semibold text-foreground">Next.js</span>, building scalable APIs, modern frontend
-                  architecture, and production-ready applications with emphasis on performance and clean code.
-                </p>
-              </div>
+            {/* Glassmorphism Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
+            {/* Category Title */}
+            <div className="relative z-10 mb-6">
+              <h3 className="text-xl font-bold tracking-tight">{category.title}</h3>
+              <div className="mt-2 h-1 w-12 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
             </div>
-          </motion.div>
 
-          {/* Skills Grid */}
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid md:grid-cols-2 gap-8"
-          >
-            {skillDomains.map((domain, domainIndex) => (
-              <motion.div
-                key={domainIndex}
-                variants={item}
-                className="group p-8 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg transition-all duration-300"
-              >
-                {/* Domain Header */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <domain.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">{domain.title}</h3>
-                </div>
+            {/* Technology Grid */}
+            <motion.div
+              variants={container}
+              className="relative z-10 grid grid-cols-2 gap-3"
+            >
+              {category.technologies.map((tech, techIndex) => (
+                <motion.div
+                  key={techIndex}
+                  variants={techItemVariant}
+                  whileHover={{ 
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  className="flex items-center justify-center px-3 py-2.5 rounded-lg bg-background/60 border border-border/40 hover:border-foreground/20 hover:bg-background/80 transition-all duration-200 cursor-default"
+                >
+                  <span className="text-sm font-medium text-foreground">
+                    {tech}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
 
-                {/* Skills List */}
-                <div className="space-y-4">
-                  {domain.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h4 className="font-semibold text-sm">{skill.name}</h4>
-                        <span
-                          className={`text-xs px-2 py-1 rounded-full border ${
-                            proficiencyColors[
-                              skill.proficiency as keyof typeof proficiencyColors
-                            ]
-                          }`}
-                        >
-                          {skill.proficiency}
-                        </span>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {skill.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+            {/* Subtle Corner Accent */}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Bottom Statement */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="mt-16 text-center"
+      >
+        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Continuously learning and adapting to new technologies while maintaining deep expertise in the MERN stack and Next.js ecosystem.
+        </p>
+      </motion.div>
     </SectionContainer>
   );
 }

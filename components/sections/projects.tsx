@@ -25,8 +25,8 @@ export function Projects() {
     <SectionContainer id="projects">
       <SectionHeader
         label="Selected Work"
-        title="Projects & Case Studies"
-        subtitle="A collection of products I designed and developed across ecommerce, SaaS platforms, and real-world applications."
+        title="Real Projects, Real Impact"
+        subtitle="Production applications serving real users—from SaaS platforms to ecommerce systems"
         align="left"
       />
 
