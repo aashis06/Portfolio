@@ -4,28 +4,62 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import SmoothScroll from "@/components/animations/smooth-scroll";
+import { Analytics, GoogleAnalytics } from "@/components/analytics";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Ashis Acharya - Full Stack Developer | MERN & Next.js",
-  description: "Full Stack Developer specializing in Next.js and the MERN stack, with production experience building SaaS platforms, ecommerce systems, and real-time web applications.",
-  keywords: ["Full Stack Developer", "MERN Stack", "Next.js", "React", "Node.js", "TypeScript", "Web Development", "Ashis Acharya"],
-  authors: [{ name: "Ashis Acharya" }],
+  metadataBase: new URL('https://ashisacharya.com'),
+  title: {
+    default: "Ashis Acharya - Full Stack Developer | MERN & Next.js",
+    template: "%s | Ashis Acharya"
+  },
+  description: "Full Stack Developer specializing in Next.js and the MERN stack. Building production-ready SaaS platforms, ecommerce systems, and scalable web applications. 1000+ daily active users. Open to opportunities.",
+  keywords: [
+    "Full Stack Developer",
+    "MERN Stack Developer",
+    "Next.js Developer",
+    "React Developer",
+    "Node.js Developer",
+    "TypeScript Developer",
+    "Web Development",
+    "SaaS Development",
+    "Ecommerce Development",
+    "Ashis Acharya",
+    "Nepal Developer",
+    "Bhaktapur Developer",
+    "Hire Full Stack Developer"
+  ],
+  authors: [{ name: "Ashis Acharya", url: "https://ashisacharya.com" }],
   creator: "Ashis Acharya",
+  publisher: "Ashis Acharya",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://ashisacharya.com",
-    title: "Ashis Acharya - Full Stack Developer",
-    description: "Full Stack Developer specializing in Next.js and the MERN stack, building scalable web applications with clean code and modern architecture.",
+    title: "Ashis Acharya - Full Stack Developer | MERN & Next.js",
+    description: "Full Stack Developer building production-ready web applications. Specialized in Next.js, React, Node.js, and MongoDB. 4+ projects delivered, 1000+ daily users.",
     siteName: "Ashis Acharya Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ashis Acharya - Full Stack Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ashis Acharya - Full Stack Developer",
-    description: "Full Stack Developer specializing in Next.js and the MERN stack",
+    description: "Full Stack Developer specializing in Next.js and the MERN stack. Building scalable web applications.",
     creator: "@aashis06",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -38,6 +72,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    // Add your verification codes here when ready
+    // google: "your-google-verification-code",
+    // yandex: "your-yandex-verification-code",
+  },
 };
 
 export default function RootLayout({
@@ -47,9 +86,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn("antialiased", inter.variable)} suppressHydrationWarning>
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className="min-h-screen bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <SmoothScroll>{children}</SmoothScroll>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
