@@ -13,7 +13,7 @@ const techCategories = [
       "TypeScript",
       "Tailwind",
       "JavaScript",
-      "HTML/CSS",
+      "Shadcn/ui",
     ],
   },
   {
@@ -34,28 +34,20 @@ const techCategories = [
       "PostgreSQL",
       "MySQL",
       "Redis",
-      "Prisma",
-      "Mongoose",
     ],
   },
   {
     title: "DevOps & Tools",
     technologies: [
       "Git",
-      "Docker",
       "Vercel",
-      "AWS",
-      "CI/CD",
-      "Linux",
     ],
   },
   {
     title: "Testing",
     technologies: [
       "Jest",
-      "Vitest",
       "Postman",
-      "Cypress",
     ],
   },
 ];

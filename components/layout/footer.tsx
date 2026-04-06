@@ -92,7 +92,7 @@ export function Footer() {
                     <a
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                     >
                       {link.name}
                     </a>
@@ -131,7 +131,7 @@ export function Footer() {
                       href={link.href}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group cursor-pointer"
                     >
                       <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                       {link.name}
@@ -158,7 +158,7 @@ export function Footer() {
             {/* Back to Top Button */}
             <button
               onClick={scrollToTop}
-              className="group flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-card/30 hover:bg-card/50 hover:border-primary/50 transition-all duration-300"
+              className="group flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-card/30 hover:bg-card/50 hover:border-primary/50 transition-all duration-300 cursor-pointer"
               aria-label="Scroll to top"
             >
               <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">

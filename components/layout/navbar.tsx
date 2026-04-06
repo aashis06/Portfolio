@@ -49,31 +49,72 @@ export function Navbar() {
       scrollTimeout = setTimeout(() => {
         const scrollPosition = window.scrollY + 150;
         
-        const sections = [
-          { id: "home", navId: "home" },
-          { id: "about", navId: "about" },
-          { id: "skills", navId: "skills" },
-          { id: "projects", navId: "projects" },
-          { id: "experience", navId: "experience" },
-          { id: "contact", navId: "contact" },
-        ];
+        // Get all main sections
+        const homeEl = document.getElementById("home");
+        const aboutEl = document.getElementById("about");
+        const skillsEl = document.getElementById("skills");
+        const projectsEl = document.getElementById("projects");
+        const experienceEl = document.getElementById("experience");
+        const contactEl = document.getElementById("contact");
 
         let currentSection = "home";
-        
-        // Check each section to find which one we're currently in
-        for (const section of sections) {
-          const element = document.getElementById(section.id);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            const offsetTop = window.scrollY + rect.top;
-            const offsetBottom = offsetTop + element.offsetHeight;
-            
-            // Check if scroll position is within this section
-            if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-              currentSection = section.navId;
-              break;
+
+        // Helper function to check if scroll is within a section
+        const isInSection = (element: HTMLElement | null) => {
+          if (!element) return false;
+          const rect = element.getBoundingClientRect();
+          const offsetTop = window.scrollY + rect.top;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          return scrollPosition >= offsetTop && scrollPosition < offsetBottom;
+        };
+
+        // Check sections in order, with proper grouping
+        if (contactEl && isInSection(contactEl)) {
+          currentSection = "contact";
+        } else if (experienceEl) {
+          // Experience section includes Developer Timeline
+          const expRect = experienceEl.getBoundingClientRect();
+          const expTop = window.scrollY + expRect.top;
+          
+          // Check if we're in experience or any section after it until contact
+          if (contactEl) {
+            const contactRect = contactEl.getBoundingClientRect();
+            const contactTop = window.scrollY + contactRect.top;
+            if (scrollPosition >= expTop && scrollPosition < contactTop) {
+              currentSection = "experience";
             }
+          } else if (scrollPosition >= expTop) {
+            currentSection = "experience";
           }
+        }
+        
+        if (currentSection === "home" && projectsEl && isInSection(projectsEl)) {
+          currentSection = "projects";
+        }
+        
+        if (currentSection === "home" && skillsEl && isInSection(skillsEl)) {
+          currentSection = "skills";
+        }
+        
+        if (currentSection === "home" && aboutEl) {
+          // About section includes Why Work With Me
+          const aboutRect = aboutEl.getBoundingClientRect();
+          const aboutTop = window.scrollY + aboutRect.top;
+          
+          // Check if we're in about or any section after it until skills
+          if (skillsEl) {
+            const skillsRect = skillsEl.getBoundingClientRect();
+            const skillsTop = window.scrollY + skillsRect.top;
+            if (scrollPosition >= aboutTop && scrollPosition < skillsTop) {
+              currentSection = "about";
+            }
+          } else if (scrollPosition >= aboutTop) {
+            currentSection = "about";
+          }
+        }
+        
+        if (currentSection === "home" && homeEl && isInSection(homeEl)) {
+          currentSection = "home";
         }
 
         setActiveSection(currentSection);
@@ -170,7 +211,7 @@ export function Navbar() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="ml-2"
+                className="ml-2 cursor-pointer"
               >
                 {theme === "dark" ? (
                   <Sun className="h-5 w-5" />
@@ -215,7 +256,7 @@ export function Navbar() {
                   <Button
                     variant="outline"
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    className="w-full justify-start"
+                    className="w-full justify-start cursor-pointer"
                   >
                     {theme === "dark" ? (
                       <>

@@ -235,7 +235,7 @@ export function Contact() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     disabled={isSubmitted}
                   >
                     {isSubmitted ? (

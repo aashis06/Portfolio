@@ -24,7 +24,7 @@ const techStack = [
   { name: "Node", angle: 60, distance: 140 },
   { name: "Mongo", angle: 120, distance: 140 },
   { name: "Django", angle: 180, distance: 140 },
-  { name: "PostgreSQL", angle: 240, distance: 140 },
+  { name: "Express", angle: 240, distance: 140 },
   { name: "Tailwind", angle: 300, distance: 140 },
 ];
 

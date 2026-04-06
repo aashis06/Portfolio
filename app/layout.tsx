@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import SmoothScroll from "@/components/animations/smooth-scroll";
 import { Analytics, GoogleAnalytics } from "@/components/analytics";
+import CustomCursor from "@/components/ui/custom-cursor";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -89,8 +90,9 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
       </head>
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen bg-background text-foreground cursor-none">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <CustomCursor />
           <SmoothScroll>{children}</SmoothScroll>
           <Analytics />
         </ThemeProvider>
