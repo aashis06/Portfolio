@@ -126,23 +126,29 @@
   html {
     @apply font-sans;
     font-size: 16px;
+    font-weight: 400;
     width: 100%;
     max-width: 100vw;
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
   }
   
   body {
     @apply bg-background text-foreground font-sans;
     font-size: 1rem;
+    font-weight: 400;
     line-height: 1.5;
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   /* Prevent zoom on input focus (iOS) */
@@ -150,6 +156,11 @@
   textarea,
   select {
     font-size: 16px;
+  }
+  
+  /* Ensure headings don't inherit bold from fallback fonts */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
   }
 }
 

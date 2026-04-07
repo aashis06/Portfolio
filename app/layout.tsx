@@ -11,6 +11,10 @@ const inter = Inter({
   subsets: ["latin"], 
   variable: "--font-sans",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+  adjustFontFallback: false,
+  preload: true,
 });
 
 // Viewport configuration - production-consistent
