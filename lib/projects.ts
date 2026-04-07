@@ -93,7 +93,7 @@ export const projects: Project[] = [
       "Developed a comprehensive MERN stack application with Next.js frontend, featuring dynamic package management, booking workflow, payment integration, and admin dashboard for operations.",
     result:
       "Streamlined booking process reduced manual work by 70%. Platform now handles 500+ bookings monthly with automated confirmation and payment tracking.",
-    image: null,
+    image:"/project_images/A3tripshero.png",
     status: "In Development",
   },
   {
@@ -108,7 +108,7 @@ export const projects: Project[] = [
       "Architected a decoupled system with Next.js for the frontend and Django REST framework for the backend. Implemented PostgreSQL for relational data, Redis for caching, and integrated Stripe for payments.",
     result:
       "Achieved sub-2-second page loads even with 10,000+ products. Successfully processed 5,000+ transactions with zero payment failures.",
-    image: null,
+    image: "/project_images/hamrohero.png",
     status: "Production Ready",
   },
   {
@@ -123,7 +123,7 @@ export const projects: Project[] = [
       "Built end-to-end MERN application with JWT authentication, Redux state management, RESTful API design, and integrated payment gateway. Implemented admin panel for inventory and order management.",
     result:
       "Fully functional ecommerce platform with 99.9% uptime. Admin dashboard reduced inventory management time by 50% and improved order processing efficiency.",
-    image: null,
+    image: "/project_images/bookshophero.png",
     status: "Private Demo",
   },
 ];
