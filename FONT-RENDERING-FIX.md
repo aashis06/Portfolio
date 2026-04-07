@@ -3,40 +3,85 @@
 ## Problem Statement
 Portfolio looked perfect on localhost (correct font size, weight, spacing) but on Vercel everything appeared LARGER and HEAVIER — fonts were bigger and bolder, layout felt blown up.
 
-**Root Cause**: The Inter font from `next/font/google` was not loading properly on Vercel, causing the browser to fall back to system fonts (San Francisco on Mac, Segoe UI on Windows) which render larger and heavier than Inter.
+## ROOT CAUSE: Circular CSS Variable Reference ⚠️
 
-## Diagnosis Results
+**The actual bug was a circular CSS variable in `globals.css`:**
 
-### Issue #1: Missing Font Weight Configuration
-The Inter font was configured without explicit weights, causing Next.js to load only the default weight and potentially fail in production.
+```css
+@theme inline {
+  --font-sans: var(--font-sans);  /* ❌ CIRCULAR - references itself! */
+  --font-heading: var(--font-sans);
+}
+```
 
-### Issue #2: Font Fallback Metrics Inflation
-Next.js's `adjustFontFallback` feature (enabled by default) was inflating text size when the primary font failed to load, making fallback fonts appear larger.
+### Why This Broke Production But Not Dev
 
-### Issue #3: No Explicit Font-Weight Declaration
-Without explicit `font-weight: 400` on html/body, browsers were defaulting to their own font-weight values, which vary by system font.
+- **Dev mode (npm run dev)**: Next.js HMR handles this gracefully, font loads fine
+- **Production build (Vercel)**: Tailwind v4 compiles this to an invalid/empty value at `:root` level
+- **Result**: Browser falls back to system fonts (San Francisco on Mac, Segoe UI on Windows)
+- **System fonts are larger and heavier than Inter**, causing the "zoomed in" appearance
 
-### Issue #4: Missing Font Smoothing
-Lack of `-webkit-font-smoothing` and `-moz-osx-font-smoothing` caused inconsistent rendering across browsers.
+### The Variable Conflict
+
+The issue was that `next/font/google` was configured with:
+```typescript
+const inter = Inter({ 
+  variable: "--font-sans",  // ❌ Conflicts with Tailwind's --font-sans
+});
+```
+
+This created a naming collision where `--font-sans` was trying to reference itself.
 
 ## Solutions Applied
 
-### 1. Enhanced Inter Font Configuration (app/layout.tsx)
+### 1. Break the Circular CSS Variable Reference (CRITICAL FIX)
+
+**Step 1: Rename the next/font variable (app/layout.tsx)**
 
 ```typescript
-// BEFORE
+// BEFORE - Causes circular reference
 const inter = Inter({ 
   subsets: ["latin"], 
-  variable: "--font-sans",
-  display: "swap",
+  variable: "--font-sans",  // ❌ Conflicts with Tailwind
 });
 
-// AFTER
+// AFTER - Unique variable name
 const inter = Inter({ 
   subsets: ["latin"], 
-  variable: "--font-sans",
+  variable: "--font-inter",  // ✅ No conflict
   display: "swap",
-  weight: ["400", "500", "600", "700"],           // ✅ Explicit weights
+  weight: ["400", "500", "600", "700"],
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+  adjustFontFallback: false,
+  preload: true,
+});
+```
+
+**Step 2: Point --font-sans to --font-inter (app/globals.css)**
+
+```css
+@theme inline {
+  /* BEFORE - Circular reference */
+  --font-sans: var(--font-sans);     /* ❌ References itself */
+  --font-heading: var(--font-sans);
+  
+  /* AFTER - Proper reference chain */
+  --font-sans: var(--font-inter);    /* ✅ Points to Inter font */
+  --font-heading: var(--font-inter); /* ✅ Points to Inter font */
+}
+```
+
+**How this fixes the issue:**
+- `--font-inter` is defined by next/font/google
+- `--font-sans` now points to `--font-inter` (breaks the cycle)
+- Tailwind's `font-sans` utility uses `--font-sans`
+- Font loads correctly in production build
+
+### 2. Enhanced Inter Font Configuration
+
+```typescript
+const inter = Inter({ 
+  weight: ["400", "500", "600", "700"],           // ✅ Load all weights
   fallback: ["system-ui", "-apple-system", "sans-serif"], // ✅ Explicit fallbacks
   adjustFontFallback: false,                      // ✅ Disable size inflation
   preload: true,                                  // ✅ Faster loading
@@ -49,7 +94,7 @@ const inter = Inter({
 - `fallback: [...]` - Explicit fallback chain prevents unpredictable system fonts
 - `preload: true` - Loads font files earlier in the page lifecycle
 
-### 2. Explicit Font-Weight & Smoothing (app/globals.css)
+### 3. Explicit Font-Weight & Smoothing (app/globals.css)
 
 ```css
 html {
