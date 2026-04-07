@@ -9,6 +9,12 @@ import CustomCursor from "@/components/ui/custom-cursor";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://ashisacharya.com'),
   title: {
