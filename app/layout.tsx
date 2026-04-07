@@ -9,7 +9,7 @@ import CustomCursor from "@/components/ui/custom-cursor";
 
 const inter = Inter({ 
   subsets: ["latin"], 
-  variable: "--font-sans",
+  variable: "--font-inter",
   display: "swap",
   weight: ["400", "500", "600", "700"],
   fallback: ["system-ui", "-apple-system", "sans-serif"],
