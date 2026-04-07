@@ -9,12 +9,14 @@ import CustomCursor from "@/components/ui/custom-cursor";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
-// Viewport configuration for proper mobile scaling
+// Viewport configuration - prevents zoom and ensures consistent scaling
 export const viewport = {
   width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
+  initialScale: 1.0,
+  minimumScale: 1.0,
+  maximumScale: 1.0,
   userScalable: false,
+  viewportFit: 'cover',
 };
 
 export const metadata: Metadata = {
@@ -97,7 +99,6 @@ export default function RootLayout({
     <html lang="en" className={cn("antialiased", inter.variable)} suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </head>
       <body className="min-h-screen bg-background text-foreground cursor-none">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
