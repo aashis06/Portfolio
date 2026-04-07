@@ -160,6 +160,7 @@ export function Footer() {
               onClick={scrollToTop}
               className="group flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-card/30 hover:bg-card/50 hover:border-primary/50 transition-all duration-300 cursor-pointer"
               aria-label="Scroll to top"
+              suppressHydrationWarning
             >
               <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
                 Back to Top

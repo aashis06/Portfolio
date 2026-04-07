@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Mail, GitBranch, Link as LinkIcon, MapPin, Download, Send } from "lucide-react";
+import { Mail, GitBranch, Link as LinkIcon, MapPin, Download, Send, Loader2, CheckCircle, XCircle } from "lucide-react";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -13,17 +12,53 @@ export function Contact() {
     email: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Mock submission
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Message sent successfully! I\'ll get back to you soon.',
+        });
+        setFormData({ name: "", email: "", message: "" });
+        
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus({ type: null, message: '' });
+        }, 5000);
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Failed to send message. Please try again.',
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -236,12 +271,13 @@ export function Contact() {
                     type="submit"
                     size="lg"
                     className="w-full cursor-pointer"
-                    disabled={isSubmitted}
+                    disabled={isSubmitting}
+                    suppressHydrationWarning
                   >
-                    {isSubmitted ? (
+                    {isSubmitting ? (
                       <>
-                        <span className="mr-2">✓</span>
-                        Message Sent!
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Sending...
                       </>
                     ) : (
                       <>
@@ -251,15 +287,27 @@ export function Contact() {
                     )}
                   </Button>
 
-                  {/* Success Message */}
-                  {isSubmitted && (
-                    <motion.p
+                  {/* Status Messages */}
+                  {submitStatus.type === 'success' && (
+                    <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-sm text-green-500 text-center"
+                      className="flex items-center gap-2 p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-500"
                     >
-                      Thanks for reaching out! I'll get back to you soon.
-                    </motion.p>
+                      <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                      <p className="text-sm">{submitStatus.message}</p>
+                    </motion.div>
+                  )}
+
+                  {submitStatus.type === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center gap-2 p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500"
+                    >
+                      <XCircle className="w-5 h-5 flex-shrink-0" />
+                      <p className="text-sm">{submitStatus.message}</p>
+                    </motion.div>
                   )}
                 </form>
               </div>

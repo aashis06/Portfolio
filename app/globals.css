@@ -135,9 +135,22 @@
     cursor: none !important;
   }
   
-  /* Ensure interactive elements still show they're clickable */
-  a, button, input, textarea, select, [role="button"] {
-    cursor: none !important;
+  /* Show default cursor for input fields and text areas */
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+  
+  /* Show pointer cursor for interactive elements and their children */
+  a,
+  a *,
+  button,
+  button *,
+  [role="button"],
+  [role="button"] * {
+    cursor: pointer !important;
   }
 }
 

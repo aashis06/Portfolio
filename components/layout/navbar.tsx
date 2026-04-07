@@ -212,6 +212,7 @@ export function Navbar() {
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="ml-2 cursor-pointer"
+                suppressHydrationWarning
               >
                 {theme === "dark" ? (
                   <Sun className="h-5 w-5" />
@@ -225,7 +226,7 @@ export function Navbar() {
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" suppressHydrationWarning>
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
@@ -257,6 +258,7 @@ export function Navbar() {
                     variant="outline"
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                     className="w-full justify-start cursor-pointer"
+                    suppressHydrationWarning
                   >
                     {theme === "dark" ? (
                       <>

@@ -20,7 +20,19 @@ export default function CustomCursor() {
 
       animationFrameId = requestAnimationFrame(() => {
         setPosition({ x: e.clientX, y: e.clientY });
-        setIsVisible(true);
+        
+        // Check if hovering over input/textarea
+        const target = e.target as HTMLElement;
+        if (target && (
+          target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable
+        )) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
       });
     };
 
@@ -35,10 +47,10 @@ export default function CustomCursor() {
     document.addEventListener("mouseenter", handleMouseEnter);
     document.addEventListener("mouseleave", handleMouseLeave);
 
-    // Hover detection for interactive elements
+    // Hover detection for interactive elements (excluding inputs)
     const updateHoverListeners = () => {
       const hoverElements = document.querySelectorAll(
-        "a, button, input, textarea, [role='button'], .cursor-hover"
+        "a, button, [role='button'], .cursor-hover"
       );
 
       hoverElements.forEach((el) => {
