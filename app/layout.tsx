@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -7,15 +7,16 @@ import SmoothScroll from "@/components/animations/smooth-scroll";
 import { Analytics, GoogleAnalytics } from "@/components/analytics";
 import CustomCursor from "@/components/ui/custom-cursor";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: "--font-sans",
+  display: "swap",
+});
 
-// Viewport configuration - prevents zoom and ensures consistent scaling
-export const viewport = {
+// Viewport configuration - production-consistent
+export const viewport: Viewport = {
   width: 'device-width',
-  initialScale: 1.0,
-  minimumScale: 1.0,
-  maximumScale: 1.0,
-  userScalable: false,
+  initialScale: 1,
   viewportFit: 'cover',
 };
 
@@ -96,11 +97,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("antialiased", inter.variable)} suppressHydrationWarning>
+    <html lang="en" className={cn("antialiased font-sans", inter.variable)} suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
       </head>
-      <body className="min-h-screen bg-background text-foreground cursor-none">
+      <body className={cn("min-h-screen bg-background text-foreground cursor-none font-sans", inter.variable)}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <CustomCursor />
           <SmoothScroll>{children}</SmoothScroll>

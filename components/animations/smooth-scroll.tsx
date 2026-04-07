@@ -10,8 +10,9 @@ export default function SmoothScroll({
 }) {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08, // smoothness control
+      lerp: 0.08,
       smoothWheel: true,
+      syncTouch: false,
     });
 
     let rafId: number;
@@ -29,5 +30,14 @@ export default function SmoothScroll({
     };
   }, []);
 
-  return <>{children}</>;
+  return (
+    <div style={{ 
+      width: '100%', 
+      maxWidth: '100vw', 
+      overflowX: 'hidden',
+      position: 'relative',
+    }}>
+      {children}
+    </div>
+  );
 }
