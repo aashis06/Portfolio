@@ -189,14 +189,22 @@
   }
 }
 
-/* Hide custom cursor on touch devices */
+/* Show normal cursor on touch devices - IMPORTANT for mobile */
 @media (hover: none) or (pointer: coarse) {
-  .cursor-none {
+  * {
     cursor: auto !important;
   }
   
-  * {
-    cursor: auto !important;
+  a,
+  button,
+  [role="button"] {
+    cursor: pointer !important;
+  }
+  
+  input,
+  textarea,
+  select {
+    cursor: text !important;
   }
 }
 

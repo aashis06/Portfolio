@@ -86,13 +86,13 @@ export function Footer() {
               <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide mb-3 sm:mb-4">
                 Navigation
               </h4>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-1.5 sm:space-y-2">
                 {navigationLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer min-h-[44px] flex items-center"
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer inline-block py-1"
                     >
                       {link.name}
                     </a>
@@ -106,11 +106,11 @@ export function Footer() {
               <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide mb-3 sm:mb-4">
                 Tech Stack
               </h4>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-1.5 sm:space-y-2">
                 {techStack.map((tech) => (
                   <li
                     key={tech}
-                    className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2"
+                    className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2 py-1"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                     {tech}
@@ -124,14 +124,14 @@ export function Footer() {
               <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide mb-3 sm:mb-4">
                 Connect
               </h4>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-1.5 sm:space-y-2">
                 {socialLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group cursor-pointer min-h-[44px]"
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group cursor-pointer py-1"
                     >
                       <link.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
                       {link.name}

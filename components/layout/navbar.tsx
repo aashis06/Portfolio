@@ -236,9 +236,9 @@ export function Navbar() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[320px]">
-              <div className="flex flex-col gap-6 mt-8">
-                <div className="text-xl font-bold mb-4">Menu</div>
+            <SheetContent side="right" className="w-[280px] sm:w-[320px] px-6">
+              <div className="flex flex-col gap-3 mt-8">
+                <div className="text-xl font-bold mb-2">Menu</div>
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
@@ -248,7 +248,7 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     className={cn(
-                      "text-lg font-medium transition-colors hover:text-primary min-h-[44px] flex items-center",
+                      "text-lg font-medium transition-colors hover:text-primary py-2",
                       activeSection === link.href.substring(1)
                         ? "text-primary"
                         : "text-foreground/80"
@@ -263,7 +263,7 @@ export function Navbar() {
                   <Button
                     variant="outline"
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    className="w-full justify-start cursor-pointer min-h-[44px]"
+                    className="w-full justify-start cursor-pointer min-h-[44px] mt-2"
                     suppressHydrationWarning
                   >
                     {theme === "dark" ? (

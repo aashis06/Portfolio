@@ -6,10 +6,33 @@ export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hovering, setHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
+  // Check for touch device on mount
   useEffect(() => {
+    const checkTouchDevice = () => {
+      const hasTouch = 'ontouchstart' in window || 
+                       navigator.maxTouchPoints > 0 || 
+                       window.matchMedia("(pointer: coarse)").matches;
+      setIsTouchDevice(hasTouch);
+      if (hasTouch) {
+        setIsVisible(false);
+      }
+    };
+
+    checkTouchDevice();
+    
+    // Re-check on resize (for device rotation or window resize)
+    window.addEventListener('resize', checkTouchDevice);
+    return () => window.removeEventListener('resize', checkTouchDevice);
+  }, []);
+
+  useEffect(() => {
+    // Don't set up cursor on touch devices
+    if (isTouchDevice) return;
+
     let animationFrameId: number;
 
     const moveCursor = (e: MouseEvent) => {
@@ -75,17 +98,10 @@ export default function CustomCursor() {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, []);
+  }, [isTouchDevice]);
 
-  // Hide custom cursor on mobile/touch devices
-  useEffect(() => {
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) {
-      setIsVisible(false);
-    }
-  }, []);
-
-  if (!isVisible) return null;
+  // Don't render anything on touch devices
+  if (isTouchDevice || !isVisible) return null;
 
   return (
     <>
