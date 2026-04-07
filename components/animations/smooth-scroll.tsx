@@ -30,14 +30,5 @@ export default function SmoothScroll({
     };
   }, []);
 
-  return (
-    <div style={{ 
-      width: '100%', 
-      maxWidth: '100vw', 
-      overflowX: 'hidden',
-      position: 'relative',
-    }}>
-      {children}
-    </div>
-  );
+  return <>{children}</>;
 }
