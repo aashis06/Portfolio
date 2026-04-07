@@ -9,6 +9,7 @@ import CustomCursor from "@/components/ui/custom-cursor";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
+// Viewport configuration for proper mobile scaling
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
