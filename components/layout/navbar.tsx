@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { motion } from "framer-motion";
+import { Menu, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import {
@@ -163,13 +163,13 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-14 sm:h-16 items-center justify-between">
           {/* Logo */}
           <motion.a
             href="#home"
             onClick={(e) => handleClick(e, "#home")}
-            className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
+            className="text-lg sm:text-xl font-bold tracking-tight hover:text-primary transition-colors min-h-[44px] flex items-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -226,11 +226,17 @@ export function Navbar() {
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" suppressHydrationWarning>
-                <Menu className="h-5 w-5" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="min-h-[44px] min-w-[44px]"
+                suppressHydrationWarning
+              >
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
+            <SheetContent side="right" className="w-[280px] sm:w-[320px]">
               <div className="flex flex-col gap-6 mt-8">
                 <div className="text-xl font-bold mb-4">Menu</div>
                 {navLinks.map((link, index) => (
@@ -242,7 +248,7 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     className={cn(
-                      "text-lg font-medium transition-colors hover:text-primary",
+                      "text-lg font-medium transition-colors hover:text-primary min-h-[44px] flex items-center",
                       activeSection === link.href.substring(1)
                         ? "text-primary"
                         : "text-foreground/80"
@@ -257,7 +263,7 @@ export function Navbar() {
                   <Button
                     variant="outline"
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    className="w-full justify-start cursor-pointer"
+                    className="w-full justify-start cursor-pointer min-h-[44px]"
                     suppressHydrationWarning
                   >
                     {theme === "dark" ? (

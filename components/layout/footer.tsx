@@ -60,39 +60,39 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="py-16"
+          className="py-12 sm:py-14 md:py-16"
         >
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-10 lg:mb-12">
             {/* Column 1 - Brand */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <h3 className="text-xl font-bold mb-1">Ashis Acharya</h3>
-                <p className="text-sm text-primary font-medium">
+                <h3 className="text-lg sm:text-xl font-bold mb-1">Ashis Acharya</h3>
+                <p className="text-xs sm:text-sm text-primary font-medium">
                   Full Stack Developer
                 </p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 Passionate about building scalable web applications with clean code 
                 and modern architecture. Ready to contribute to innovative teams.
               </p>
-              <p className="text-xs text-muted-foreground/80 italic">
+              <p className="text-[10px] sm:text-xs text-muted-foreground/80 italic">
                 Available for full-time opportunities
               </p>
             </div>
 
             {/* Column 2 - Navigation */}
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide mb-4">
+              <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide mb-3 sm:mb-4">
                 Navigation
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {navigationLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer min-h-[44px] flex items-center"
                     >
                       {link.name}
                     </a>
@@ -103,14 +103,14 @@ export function Footer() {
 
             {/* Column 3 - Tech Stack */}
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide mb-4">
+              <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide mb-3 sm:mb-4">
                 Tech Stack
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {techStack.map((tech) => (
                   <li
                     key={tech}
-                    className="text-sm text-muted-foreground flex items-center gap-2"
+                    className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                     {tech}
@@ -121,19 +121,19 @@ export function Footer() {
 
             {/* Column 4 - Social Links */}
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide mb-4">
+              <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wide mb-3 sm:mb-4">
                 Connect
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {socialLinks.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group cursor-pointer"
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group cursor-pointer min-h-[44px]"
                     >
-                      <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                      <link.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
                       {link.name}
                     </a>
                   </li>
@@ -143,11 +143,11 @@ export function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-border/40 mb-8" />
+          <div className="border-t border-border/40 mb-6 sm:mb-8" />
 
           {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground text-center md:text-left">
               <p>© {new Date().getFullYear()} Ashis Acharya. All rights reserved.</p>
               <span className="hidden md:block">•</span>
               <p>Built with Next.js, TypeScript & Tailwind CSS</p>
@@ -158,14 +158,14 @@ export function Footer() {
             {/* Back to Top Button */}
             <button
               onClick={scrollToTop}
-              className="group flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-card/30 hover:bg-card/50 hover:border-primary/50 transition-all duration-300 cursor-pointer"
+              className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg border border-border/60 bg-card/30 hover:bg-card/50 hover:border-primary/50 transition-all duration-300 cursor-pointer min-h-[44px]"
               aria-label="Scroll to top"
               suppressHydrationWarning
             >
-              <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+              <span className="text-xs sm:text-sm text-muted-foreground group-hover:text-primary transition-colors">
                 Back to Top
               </span>
-              <ArrowUp className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:-translate-y-1 transition-all" />
+              <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground group-hover:text-primary group-hover:-translate-y-1 transition-all" />
             </button>
           </div>
         </motion.div>

@@ -33,27 +33,27 @@ export function About() {
         align="left"
       />
 
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
         {/* Left Side - Content */}
-        <div className="space-y-6">
-          <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
+        <div className="space-y-4 sm:space-y-6">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground/90 leading-relaxed">
             I'm a developer who actually ships. Not just code—complete products that solve real problems and handle real users.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground/90 leading-relaxed">
             I specialize in the <span className="font-semibold text-foreground">MERN stack</span> and <span className="font-semibold text-foreground">Next.js</span>, building everything from 
             task management platforms to ecommerce systems. My code runs in production, serving 1000+ daily users.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground/90 leading-relaxed">
             What sets me apart? I write <span className="font-semibold text-foreground">clean, maintainable code</span>, communicate clearly with teams, 
             and focus on delivering features that create business value—not just checking boxes.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground/90 leading-relaxed">
             Currently seeking full-time opportunities where I can contribute to meaningful products and grow alongside talented teams.
           </p>
         </div>
 
         {/* Right Side - Highlight Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {highlights.map((item, index) => (
             <motion.div
               key={index}
@@ -61,10 +61,10 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-8 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="group p-6 sm:p-8 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              <item.icon className="w-6 h-6 mb-4 text-primary" />
-              <h3 className="text-base font-semibold leading-snug">
+              <item.icon className="w-5 h-5 sm:w-6 sm:h-6 mb-3 sm:mb-4 text-primary" />
+              <h3 className="text-sm sm:text-base font-semibold leading-snug">
                 {item.title}
               </h3>
             </motion.div>

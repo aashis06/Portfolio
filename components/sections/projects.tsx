@@ -36,33 +36,33 @@ export function Projects() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="space-y-24"
+          className="space-y-16 sm:space-y-20 lg:space-y-24"
         >
           {projects.map((project, index) => (
             <motion.div
               key={index}
               variants={item}
-              className="group grid lg:grid-cols-2 gap-12 items-center"
+              className="group grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center"
             >
               {/* Image */}
               <Link href={`/projects/${project.slug}`} className="block group">
-                <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-primary/10 via-primary/5 to-background aspect-video cursor-pointer transition-all duration-300 hover:border-primary/30">
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border/60 bg-gradient-to-br from-primary/10 via-primary/5 to-background aspect-video cursor-pointer transition-all duration-300 hover:border-primary/30">
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                      className="object-cover rounded-3xl transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover rounded-2xl sm:rounded-3xl transition-transform duration-700 group-hover:scale-105"
                       priority={index < 2}
                     />
                   ) : (
                     <div className="flex items-center justify-center h-full">
                       <div className="text-center space-y-3">
-                        <div className="text-7xl font-bold text-muted-foreground/20">
+                        <div className="text-5xl sm:text-7xl font-bold text-muted-foreground/20">
                           {project.title.charAt(0)}
                         </div>
-                        <p className="text-sm text-muted-foreground/60">
+                        <p className="text-xs sm:text-sm text-muted-foreground/60">
                           Project Preview
                         </p>
                       </div>
@@ -73,24 +73,24 @@ export function Projects() {
 
               {/* Content */}
               <div>
-                <span className="text-sm text-primary font-medium">
+                <span className="text-xs sm:text-sm text-primary font-medium">
                   {project.status}
                 </span>
 
-                <h3 className="text-3xl font-semibold mt-2">
+                <h3 className="text-2xl sm:text-3xl font-semibold mt-2">
                   {project.title}
                 </h3>
 
-                <p className="text-muted-foreground mt-4">
+                <p className="text-sm sm:text-base text-muted-foreground mt-3 sm:mt-4">
                   {project.description}
                 </p>
 
                 {/* Tech */}
-                <div className="flex flex-wrap gap-2 mt-6">
+                <div className="flex flex-wrap gap-2 mt-4 sm:mt-6">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 text-xs rounded-full border bg-muted/60"
+                      className="px-2.5 sm:px-3 py-1 text-xs rounded-full border bg-muted/60"
                     >
                       {tech}
                     </span>
@@ -98,10 +98,10 @@ export function Projects() {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex flex-wrap gap-4 mt-8">
+                <div className="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors"
+                    className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors min-h-[44px]"
                   >
                     View Case Study <ArrowRight size={16} />
                   </Link>
@@ -111,7 +111,7 @@ export function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px]"
                     >
                       Live Demo <ExternalLink size={16} />
                     </a>
@@ -122,7 +122,7 @@ export function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px]"
                     >
                       GitHub <GitBranch size={16} />
                     </a>

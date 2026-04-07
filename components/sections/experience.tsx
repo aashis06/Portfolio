@@ -56,11 +56,11 @@ export function Experience() {
             viewport={{ once: true, margin: "-100px" }}
             className="relative"
           >
-            {/* Timeline Line */}
+            {/* Timeline Line - Hidden on mobile */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent hidden md:block" />
 
             {/* Experience Cards */}
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-10 md:space-y-12">
               {experiences.map((exp, index) => (
                 <motion.div
                   key={index}
@@ -76,54 +76,54 @@ export function Experience() {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     {/* Main Card */}
-                    <div className="relative group p-8 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-xl hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div className="relative group p-5 sm:p-6 md:p-8 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-xl hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                       {/* Header */}
-                      <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-                        <div className="flex items-start gap-4">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
+                        <div className="flex items-start gap-3 sm:gap-4">
                           {/* Company Icon */}
-                          <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
-                            <Briefcase className="w-5 h-5 text-primary" />
+                          <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 border border-primary/20">
+                            <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                           </div>
 
                           <div>
-                            <h3 className="text-2xl font-bold mb-1">{exp.company}</h3>
-                            <p className="text-lg text-primary font-semibold">{exp.role}</p>
+                            <h3 className="text-xl sm:text-2xl font-bold mb-1">{exp.company}</h3>
+                            <p className="text-base sm:text-lg text-primary font-semibold">{exp.role}</p>
                           </div>
                         </div>
 
                         {/* Type Badge */}
                         <Badge
                           variant="outline"
-                          className="bg-primary/10 text-primary border-primary/20"
+                          className="bg-primary/10 text-primary border-primary/20 w-fit"
                         >
                           {exp.type}
                         </Badge>
                       </div>
 
                       {/* Meta Info */}
-                      <div className="flex flex-wrap gap-4 mb-6 text-sm text-muted-foreground">
+                      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
+                          <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           <span>{exp.duration}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4" />
+                          <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           <span>{exp.location}</span>
                         </div>
                       </div>
 
                       {/* Responsibilities */}
-                      <div className="space-y-3">
-                        <h4 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+                      <div className="space-y-2 sm:space-y-3">
+                        <h4 className="font-semibold text-xs sm:text-sm uppercase tracking-wide text-muted-foreground">
                           Key Responsibilities
                         </h4>
                         <ul className="space-y-2">
                           {exp.responsibilities.map((item, i) => (
                             <li
                               key={i}
-                              className="flex items-start gap-3 text-muted-foreground"
+                              className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 sm:mt-2 shrink-0" />
                               <span className="leading-relaxed">{item}</span>
                             </li>
                           ))}
@@ -142,9 +142,9 @@ export function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-16 text-center"
+            className="mt-12 sm:mt-14 md:mt-16 text-center"
           >
-            <p className="text-lg text-muted-foreground italic">
+            <p className="text-base sm:text-lg text-muted-foreground italic">
               "Continuously learning, building, and improving as a full-stack developer."
             </p>
           </motion.div>

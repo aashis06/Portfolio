@@ -99,28 +99,28 @@ export function EliteSkills() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-50px" }}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
       >
         {techCategories.map((category, index) => (
           <motion.div
             key={index}
             variants={cardVariant}
             whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            className="group relative p-8 rounded-2xl bg-card/40 backdrop-blur-xl border border-border/60 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 overflow-hidden"
+            className="group relative p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-xl border border-border/60 hover:border-primary/50 hover:bg-card/60 transition-all duration-300 overflow-hidden"
           >
             {/* Glassmorphism Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
             {/* Category Title */}
-            <div className="relative z-10 mb-6">
-              <h3 className="text-xl font-bold tracking-tight">{category.title}</h3>
+            <div className="relative z-10 mb-4 sm:mb-6">
+              <h3 className="text-lg sm:text-xl font-bold tracking-tight">{category.title}</h3>
               <div className="mt-2 h-1 w-12 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
             </div>
 
             {/* Technology Grid */}
             <motion.div
               variants={container}
-              className="relative z-10 grid grid-cols-2 gap-3"
+              className="relative z-10 grid grid-cols-2 gap-2 sm:gap-3"
             >
               {category.technologies.map((tech, techIndex) => (
                 <motion.div
@@ -130,9 +130,9 @@ export function EliteSkills() {
                     scale: 1.05,
                     transition: { duration: 0.2 }
                   }}
-                  className="flex items-center justify-center px-3 py-2.5 rounded-lg bg-background/60 border border-border/40 hover:border-foreground/20 hover:bg-background/80 transition-all duration-200 cursor-default"
+                  className="flex items-center justify-center px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg bg-background/60 border border-border/40 hover:border-foreground/20 hover:bg-background/80 transition-all duration-200 cursor-default"
                 >
-                  <span className="text-sm font-medium text-foreground">
+                  <span className="text-xs sm:text-sm font-medium text-foreground text-center">
                     {tech}
                   </span>
                 </motion.div>
@@ -151,9 +151,9 @@ export function EliteSkills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="mt-16 text-center"
+        className="mt-12 sm:mt-16 text-center"
       >
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
           Continuously learning and adapting to new technologies while maintaining deep expertise in the MERN stack and Next.js ecosystem.
         </p>
       </motion.div>

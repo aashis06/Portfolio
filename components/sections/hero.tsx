@@ -30,30 +30,30 @@ const techStack = [
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center py-32 overflow-hidden">
+    <section id="home" className="relative min-h-[100dvh] flex items-center justify-center py-20 sm:py-24 md:py-32 overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)]" />
       
-      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-10 w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left Side - Content */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6 text-center lg:text-left"
           >
             <motion.p
               variants={fadeInUp}
-              className="text-sm md:text-base text-primary font-semibold tracking-wide uppercase"
+              className="text-xs sm:text-sm md:text-base text-primary font-semibold tracking-wide uppercase"
             >
               Full Stack Developer • MERN & Next.js
             </motion.p>
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
             >
               I build products
               <br />
@@ -62,7 +62,7 @@ export function Hero() {
 
             <motion.p
               variants={fadeInUp}
-              className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
               Production-ready web applications with clean code, scalable architecture, and real business impact. 
               From SaaS platforms to ecommerce systems—I ship features that work.
@@ -71,29 +71,29 @@ export function Hero() {
             {/* Proof Highlights */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-3 gap-4 pt-2 max-w-xl"
+              className="grid grid-cols-3 gap-2 sm:gap-4 pt-2 max-w-xl mx-auto lg:mx-0"
             >
-              <div className="text-center p-3 rounded-lg bg-card/50 border border-border/60">
-                <p className="text-2xl font-bold text-foreground">4+</p>
-                <p className="text-xs text-muted-foreground mt-1">Production Projects</p>
+              <div className="text-center p-2 sm:p-3 rounded-lg bg-card/50 border border-border/60">
+                <p className="text-xl sm:text-2xl font-bold text-foreground">4+</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Production Projects</p>
               </div>
-              <div className="text-center p-3 rounded-lg bg-card/50 border border-border/60">
-                <p className="text-2xl font-bold text-foreground">1000+</p>
-                <p className="text-xs text-muted-foreground mt-1">Daily Active Users</p>
+              <div className="text-center p-2 sm:p-3 rounded-lg bg-card/50 border border-border/60">
+                <p className="text-xl sm:text-2xl font-bold text-foreground">1000+</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Daily Active Users</p>
               </div>
-              <div className="text-center p-3 rounded-lg bg-card/50 border border-border/60">
-                <p className="text-2xl font-bold text-foreground">6mo</p>
-                <p className="text-xs text-muted-foreground mt-1">Internship Experience</p>
+              <div className="text-center p-2 sm:p-3 rounded-lg bg-card/50 border border-border/60">
+                <p className="text-xl sm:text-2xl font-bold text-foreground">6mo</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Internship Experience</p>
               </div>
             </motion.div>
 
             <motion.div
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 justify-center lg:justify-start"
             >
               <Button
                 size="lg"
-                className="text-base group"
+                className="text-sm sm:text-base group w-full sm:w-auto min-h-[44px]"
                 asChild
               >
                 <a href="#projects" className="relative overflow-hidden">
@@ -103,7 +103,7 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-base group"
+                className="text-sm sm:text-base group w-full sm:w-auto min-h-[44px]"
                 asChild
               >
                 <a href="#contact">Let's Talk</a>
@@ -116,7 +116,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:flex items-center justify-center h-[500px]"
+            className="relative hidden lg:flex items-center justify-center h-[400px] lg:h-[500px]"
           >
             {/* Center Element */}
             <motion.div

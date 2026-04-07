@@ -98,30 +98,30 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24">
-      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-12">
+    <section id="contact" className="py-16 sm:py-20 md:py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
             {/* Left Side - Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
               {/* Header */}
-              <div className="space-y-4">
-                <p className="text-sm font-medium text-primary tracking-wide uppercase">
+              <div className="space-y-3 sm:space-y-4">
+                <p className="text-xs sm:text-sm font-medium text-primary tracking-wide uppercase">
                   Get in Touch
                 </p>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
                   Let's Work Together
                 </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
                   Looking for a dedicated full-stack developer? I'm available for full-time opportunities, 
                   freelance projects, and technical collaborations.
                 </p>
-                <p className="text-sm text-muted-foreground/80 italic">
+                <p className="text-xs sm:text-sm text-muted-foreground/80 italic">
                   💬 I typically respond within 24 hours
                 </p>
               </div>
@@ -129,14 +129,14 @@ export function Contact() {
               {/* Availability Badge */}
               <Badge
                 variant="outline"
-                className="bg-green-500/10 text-green-500 border-green-500/20 px-4 py-2"
+                className="bg-green-500/10 text-green-500 border-green-500/20 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm"
               >
                 <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
                 Open to Opportunities
               </Badge>
 
               {/* Contact Details */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {contactInfo.map((item, index) => (
                   <motion.div
                     key={index}
@@ -150,24 +150,24 @@ export function Contact() {
                         href={item.href}
                         target={item.href.startsWith("http") ? "_blank" : undefined}
                         rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-card/30 hover:bg-card/50 hover:border-primary/50 transition-all duration-300 group"
+                        className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-border/60 bg-card/30 hover:bg-card/50 hover:border-primary/50 transition-all duration-300 group min-h-[60px]"
                       >
                         <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                          <item.icon className="w-5 h-5 text-primary" />
+                          <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">{item.label}</p>
-                          <p className="font-medium">{item.value}</p>
+                          <p className="text-[10px] sm:text-xs text-muted-foreground">{item.label}</p>
+                          <p className="text-sm sm:text-base font-medium">{item.value}</p>
                         </div>
                       </a>
                     ) : (
-                      <div className="flex items-center gap-4 p-4 rounded-xl border border-border/60 bg-card/30">
+                      <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-border/60 bg-card/30 min-h-[60px]">
                         <div className="p-2 rounded-lg bg-primary/10">
-                          <item.icon className="w-5 h-5 text-primary" />
+                          <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">{item.label}</p>
-                          <p className="font-medium">{item.value}</p>
+                          <p className="text-[10px] sm:text-xs text-muted-foreground">{item.label}</p>
+                          <p className="text-sm sm:text-base font-medium">{item.value}</p>
                         </div>
                       </div>
                     )}
@@ -179,7 +179,7 @@ export function Contact() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto min-h-[44px]"
                 asChild
               >
                 <a href="/Ashis_Acharya_CV_final.pdf" download="Ashis-Acharya-CV-final.pdf">
@@ -201,8 +201,8 @@ export function Contact() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-2xl blur-2xl opacity-50" />
 
               {/* Form Card */}
-              <div className="relative p-8 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-xl">
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="relative p-5 sm:p-6 md:p-8 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-xl">
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                   {/* Name Field */}
                   <div className="relative">
                     <input
@@ -270,7 +270,7 @@ export function Contact() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full cursor-pointer"
+                    className="w-full cursor-pointer min-h-[44px]"
                     disabled={isSubmitting}
                     suppressHydrationWarning
                   >

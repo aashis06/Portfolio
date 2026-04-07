@@ -48,7 +48,7 @@ export function TeamValue() {
         align="left"
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {strengths.map((strength, index) => (
           <motion.div
             key={index}
@@ -56,13 +56,13 @@ export function TeamValue() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="p-6 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+            className="p-5 sm:p-6 rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:shadow-lg transition-all duration-300"
           >
-            <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4">
-              <strength.icon className="w-5 h-5 text-primary" />
+            <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 w-fit mb-3 sm:mb-4">
+              <strength.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">{strength.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <h3 className="text-base sm:text-lg font-semibold mb-2">{strength.title}</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
               {strength.description}
             </p>
           </motion.div>
