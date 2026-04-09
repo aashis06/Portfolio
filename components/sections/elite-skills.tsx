@@ -12,6 +12,7 @@ const techCategories = [
       "React",
       "TypeScript",
       "Tailwind",
+      "Zustand",
       "JavaScript",
       "Shadcn/ui",
     ],
