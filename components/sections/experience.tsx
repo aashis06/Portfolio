@@ -10,7 +10,7 @@ const experiences = [
   {
     company: "Sarbatra Inc Pvt Ltd",
     role: "Full Stack Developer Intern",
-    duration: "November 2025 — April 2026",
+    duration: "December 2025 — April 2026",
     location: "Koteshwor, Kathmandu",
     type: "Internship",
     responsibilities: [

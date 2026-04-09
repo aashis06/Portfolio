@@ -78,11 +78,7 @@ export function Hero() {
                 <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Production Projects</p>
               </div>
               <div className="text-center p-2 sm:p-3 rounded-lg bg-card/50 border border-border/60">
-                <p className="text-xl sm:text-2xl font-bold text-foreground">1000+</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Daily Active Users</p>
-              </div>
-              <div className="text-center p-2 sm:p-3 rounded-lg bg-card/50 border border-border/60">
-                <p className="text-xl sm:text-2xl font-bold text-foreground">6mo</p>
+                <p className="text-xl sm:text-2xl font-bold text-foreground">4mo</p>
                 <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Internship Experience</p>
               </div>
             </motion.div>
