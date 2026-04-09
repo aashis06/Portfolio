@@ -71,15 +71,15 @@ export function Hero() {
             {/* Proof Highlights */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-3 gap-2 sm:gap-4 pt-2 max-w-xl mx-auto lg:mx-0"
+              className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-2 max-w-xl mx-auto lg:mx-0"
             >
-              <div className="text-center p-2 sm:p-3 rounded-lg bg-card/50 border border-border/60">
-                <p className="text-xl sm:text-2xl font-bold text-foreground">4+</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Production Projects</p>
+              <div className="flex-1 min-w-[140px] max-w-[180px] text-center p-3 sm:p-4 rounded-lg bg-card/50 border border-border/60">
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">4+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Production Projects</p>
               </div>
-              <div className="text-center p-2 sm:p-3 rounded-lg bg-card/50 border border-border/60">
-                <p className="text-xl sm:text-2xl font-bold text-foreground">4mo</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">Internship Experience</p>
+              <div className="flex-1 min-w-[140px] max-w-[180px] text-center p-3 sm:p-4 rounded-lg bg-card/50 border border-border/60">
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">4mo</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Internship Experience</p>
               </div>
             </motion.div>
 
