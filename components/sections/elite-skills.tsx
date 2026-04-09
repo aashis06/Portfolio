@@ -33,7 +33,6 @@ const techCategories = [
       "MongoDB",
       "PostgreSQL",
       "MySQL",
-      "Redis",
     ],
   },
   {
